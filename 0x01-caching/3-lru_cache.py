@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
-"""module"""
+"""caching module.
+"""
 from collections import OrderedDict
 
 from base_caching import BaseCaching
 
 
 class LRUCache(BaseCaching):
-    """starting a coache"""
+    """Represents an object.
+    """
     def __init__(self):
-        """starting the cache.
+        """Initializes the cache.
         """
         super().__init__()
         self.cache_data = OrderedDict()
 
     def put(self, key, item):
-        """creating item in the cache.
+        """Adds an item in the cache.
         """
         if key is None or item is None:
             return
@@ -28,7 +30,7 @@ class LRUCache(BaseCaching):
             self.cache_data[key] = item
 
     def get(self, key):
-        """return item by key.
+        """get an item by key.
         """
         if key is not None and key in self.cache_data:
             self.cache_data.move_to_end(key, last=False)
